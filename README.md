@@ -1,8 +1,8 @@
 #CheckBox
 *说明 来源[https://github.com/andyxialm/SmoothCheckBox][2]
 
-效果图
-[img][3]
+
+![效果图](https://github.com/xiaoxiaoying/PageRecycleView/blob/master/gif/checkBox.gif)
 
 # PageRecyclerView
 
