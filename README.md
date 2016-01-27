@@ -1,6 +1,8 @@
 #CheckBox
 *说明 来源[https://github.com/andyxialm/SmoothCheckBox][2]
 
+效果图
+[img][3]
 
 # PageRecyclerView
 
@@ -34,3 +36,4 @@ mRecyclerView.setItemLayoutMatchParent(5);
 
 [1]:https://github.com/xiaoxiaoying/PageRecycleView/tree/master/libs
 [2]:https://github.com/andyxialm/SmoothCheckBox
+[3]:https://github.com/xiaoxiaoying/PageRecycleView/blob/master/gif/checkBox.gif
