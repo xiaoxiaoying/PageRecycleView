@@ -1,3 +1,7 @@
+#CheckBox
+*说明 来源[https://github.com/andyxialm/SmoothCheckBox][2]
+
+
 # PageRecyclerView
 
 本案例是studio项目，不过我打包了jar
@@ -10,7 +14,7 @@
  mRecyclerView.addHeaderView(view);
 
 ```
-**下拉刷新**只支持 ** VERTICAL **
+**下拉刷新** 只支持 **VERTICAL**
 *需要实现 OnLoadNextListener
 ```java
 mRecyclerView.setLoadNextListener(this);
@@ -29,3 +33,4 @@ mRecyclerView.setItemLayoutMatchParent(5);
 ```
 
 [1]:https://github.com/xiaoxiaoying/PageRecycleView/tree/master/libs
+[2]:https://github.com/andyxialm/SmoothCheckBox
