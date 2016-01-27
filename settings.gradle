@@ -1,1 +1,1 @@
-include ':app', ':pagerecyclerviewlibrary'
+include ':app', ':pagerecyclerviewlibrary', ':checkbox'

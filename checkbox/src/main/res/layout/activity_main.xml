@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.xiaoxiaoyin.checkbox.view.CheckBox xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/circle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:shape="Circle" />
+
+    <com.xiaoxiaoyin.checkbox.view.CheckBox xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rectangle"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="10dp"
+        app:shape="Rectangle" />
+</LinearLayout>

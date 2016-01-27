@@ -1,0 +1,14 @@
+<resources>
+    <declare-styleable name="CheckBox">
+        <attr name="duration" format="integer" />
+        <attr name="stroke_width" format="dimension" />
+        <attr name="color_tick" format="color" />
+        <attr name="color_checked" format="color" />
+        <attr name="color_unchecked" format="color" />
+        <attr name="color_unchecked_stroke" format="color" />
+        <attr name="shape" >
+            <enum name="Circle" value="0x00" />
+            <enum name="Rectangle" value="0x01" />
+        </attr>
+    </declare-styleable>
+</resources>

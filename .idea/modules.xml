@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PageRecycleView.iml" filepath="$PROJECT_DIR$/PageRecycleView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/checkbox/checkbox.iml" filepath="$PROJECT_DIR$/checkbox/checkbox.iml" />
       <module fileurl="file://$PROJECT_DIR$/pagerecyclerviewlibrary/pagerecyclerviewlibrary.iml" filepath="$PROJECT_DIR$/pagerecyclerviewlibrary/pagerecyclerviewlibrary.iml" />
     </modules>
   </component>
