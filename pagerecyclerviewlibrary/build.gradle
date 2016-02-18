@@ -30,5 +30,6 @@ publish {
     groupId = 'com.xiaoxiaoyin'
     artifactId = 'PageRecycleView'
     version = '1.2'
+    description = 'page recyclerView '
     website = 'https://github.com/xiaoxiaoying/PageRecycleView'
 }
