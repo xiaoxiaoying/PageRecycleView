@@ -12,7 +12,7 @@
 
 ```gradle
 dependencies {
-  compile 'com.xiaoxiaoyin:PageRecyclerView:1.2'
+  compile 'com.xiaoxiaoyin:PageRecycleView:1.2'
 }
 ```
 
