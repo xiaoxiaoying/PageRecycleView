@@ -28,7 +28,7 @@ dependencies {
 publish {
     userOrg = 'xiaoxiaoyin'
     groupId = 'com.xiaoxiaoyin'
-    artifactId = 'PageRecyclerView'
+    artifactId = 'PageRecycleView'
     version = '1.2'
     website = 'https://github.com/xiaoxiaoying/PageRecycleView'
 }
