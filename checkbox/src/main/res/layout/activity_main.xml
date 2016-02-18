@@ -18,4 +18,10 @@
         android:layout_height="100dp"
         android:layout_marginTop="10dp"
         app:shape="Rectangle" />
+
+    <com.xiaoxiaoyin.checkbox.view.PlayProgress
+        android:id="@+id/play_progress"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp" />
 </LinearLayout>

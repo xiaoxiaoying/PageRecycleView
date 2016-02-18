@@ -62,7 +62,7 @@ public class LoadingFooter {
         mState = status;
 
         mLoadingFooter.setVisibility(View.VISIBLE);
-        switch (status) {
+        switch (mState) {
             case Loading:
                 mLoadingText.setVisibility(View.GONE);
                 mLoadingText.setText("努力加载数据中...");

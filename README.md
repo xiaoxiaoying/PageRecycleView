@@ -10,6 +10,12 @@
 
 [下载jar][1]
 
+```gradle
+dependencies {
+  compile 'com.xiaoxiaoyin:PageRecyclerView:1.2'
+}
+```
+
 为RecyclerView添加head
 ```java
 
