@@ -21,3 +21,11 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+ext {
+    GROUP = 'com.xiaoxiaoyin'
+    VERSION_NAME = "1.2"
+
+    POM_URL="https://github.com/xiaoxiaoying/PageRecycleView"
+    POM_SCM_URL="https://github.com/xiaoxiaoying/PageRecycleView"
+}
