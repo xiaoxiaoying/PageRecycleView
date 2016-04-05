@@ -1,5 +1,4 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
@@ -17,19 +16,12 @@ android {
         }
     }
 }
-
+ext{
+    supportVersion = '23.1.1'
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.1.1'
-    compile 'com.android.support:recyclerview-v7:23.1.1'
-}
-//./gradlew clean build bintrayUpload -PbintrayUser=BINTRAY_USERNAME -PbintrayKey=BINTRAY_KEY -PdryRun=false
-publish {
-    userOrg = 'xiaoxiaoyin'
-    groupId = 'com.xiaoxiaoyin'
-    artifactId = 'PageRecycleView'
-    version = '1.2'
-    description = 'page recyclerView '
-    website = 'https://github.com/xiaoxiaoying/PageRecycleView'
+    compile "com.android.support:appcompat-v7:${supportVersion}"
+    compile "com.android.support:recyclerview-v7:${supportVersion}"
 }

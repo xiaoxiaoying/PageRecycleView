@@ -10,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -20,11 +21,12 @@ import com.xiaoxiaoyin.recycler.PageRecyclerView;
 import com.xiaoxiaoyin.recycler.widget.LoadingFooter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by xiaoxiaoyin on 16/1/13.
  */
-public class GridHeadActivity extends AppCompatActivity implements OnLoadNextListener {
+public class GridHeadActivity extends AppCompatActivity implements OnLoadNextListener, View.OnClickListener {
     private PageRecyclerView mRecyclerView;
 
     @Override
@@ -40,10 +42,12 @@ public class GridHeadActivity extends AppCompatActivity implements OnLoadNextLis
     private int type;
     private AllAdapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private TextView txt;
 
     private void initView() {
         type = intent.getIntExtra("type", 0);
-
+        txt = (TextView) findViewById(R.id.txt);
+        txt.setOnClickListener(this);
         View view = LayoutInflater.from(this).inflate(R.layout.txt_item, null);
         ((TextView) view).setText("header");
         ((TextView) view).setTextSize(28);
@@ -85,8 +89,8 @@ public class GridHeadActivity extends AppCompatActivity implements OnLoadNextLis
 //                super.getItemOffsets(outRect, view, parent, state);
             }
         });
-        mRecyclerView.addHeaderView(view);
-        mRecyclerView.setLoadNextListener(this);
+//        mRecyclerView.addHeaderView(view);
+//        mRecyclerView.setLoadNextListener(this);
         page();
     }
 
@@ -96,7 +100,7 @@ public class GridHeadActivity extends AppCompatActivity implements OnLoadNextLis
     private void setDate() {
         arrayList.clear();
         for (int i = 0; i < 20; i++) {
-            arrayList.add("this is test," + Math.random() * 20);
+            arrayList.add(String.valueOf(i + 1));
         }
     }
 
@@ -120,5 +124,25 @@ public class GridHeadActivity extends AppCompatActivity implements OnLoadNextLis
         }
 
 
+    }
+
+    private int i = 0;
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.txt:
+                Collections.reverse(arrayList);
+                for (String s : arrayList) {
+                    i++;
+                    Log.i("TestActivity", "78 " + i + " ===>>>>>> " + s);
+                }
+                adapter.clear();
+                adapter.addAll(arrayList);
+                mRecyclerView.notifyDataSetChanged();
+                break;
+            default:
+                break;
+        }
     }
 }

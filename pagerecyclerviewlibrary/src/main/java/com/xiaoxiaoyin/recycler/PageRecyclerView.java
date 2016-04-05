@@ -195,6 +195,20 @@ public class PageRecyclerView extends RecyclerView {
         super.swapAdapter(mLoadAdapter, true);
     }
 
+    public void notifyDataSetChanged() {
+        if (mLoadAdapter != null) {
+            mLoadAdapter.notifyDataSetChanged();
+        }
+    }
+
+
+    public void notifyItemInserted(int index) {
+        if (mLoadAdapter != null) {
+            mLoadAdapter.notifyItemInserted(index);
+        }
+    }
+
+
     /**
      * 添加头部view
      *

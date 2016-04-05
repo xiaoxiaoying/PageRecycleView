@@ -2,6 +2,7 @@ package com.xiaoxiaoyin.recycler.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,13 +20,14 @@ import java.util.List;
  */
 public abstract class ArrayAdapter<T> extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private final int ITEM_TAG = 0x46257;
-    private List<T> arrayObject;
+    private ArrayList<T> arrayObject;
     private Context mContext;
     private int mResource;
     private ArrayList<T> mOriginalValues;
     private final Object mLock = new Object();
     private LayoutInflater inflater;
     private OnItemClickListener mListener;
+    private boolean isHead;
 
     public ArrayAdapter(Context context) {
         init(context, 0, new ArrayList<T>());
@@ -35,15 +37,19 @@ public abstract class ArrayAdapter<T> extends RecyclerView.Adapter<RecyclerView.
         init(context, resource, new ArrayList<T>());
     }
 
-    public ArrayAdapter(Context context, int resource, List<T> object) {
+    public ArrayAdapter(Context context, int resource, ArrayList<T> object) {
         init(context, resource, object);
     }
 
-    private void init(Context context, int resource, List<T> arrayObject) {
+    private void init(Context context, int resource, ArrayList<T> arrayObject) {
         this.mContext = context;
         this.arrayObject = arrayObject;
         this.mResource = resource;
         inflater = LayoutInflater.from(context);
+    }
+
+    public void isHead(boolean isHead) {
+        this.isHead = isHead;
     }
 
     public Context getContext() {
@@ -100,6 +106,30 @@ public abstract class ArrayAdapter<T> extends RecyclerView.Adapter<RecyclerView.
         notifyDataSetChanged();
     }
 
+    /**
+     * Removes the specified object from the array.
+     *
+     * @param object The object to remove.
+     */
+    public void remove(T object) {
+        synchronized (mLock) {
+            if (mOriginalValues != null) {
+                mOriginalValues.remove(object);
+            } else {
+                arrayObject.remove(object);
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    public ArrayList<T> getData() {
+        synchronized (mLock) {
+            if (mOriginalValues != null)
+                return mOriginalValues;
+            else return arrayObject;
+        }
+    }
+
     public void clear() {
         synchronized (mLock) {
             if (mOriginalValues != null) {
@@ -149,20 +179,28 @@ public abstract class ArrayAdapter<T> extends RecyclerView.Adapter<RecyclerView.
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        T object = getItem(position);
+        int p = position;
+        if (isHead && p != 0)
+            p = p - 1;
+        T object = getItem(p);
         if (object != null) {
             holder.itemView.setTag(object);
-            onBindView(holder, position, object);
-            onBindView(holder, position);
+            onBindView(holder, p, object);
+            onBindView(holder, p);
             setListener(holder);
         }
 
     }
 
+
     @Override
     public int getItemCount() {
-        if (arrayObject != null)
+
+        if (arrayObject != null) {
+            if (mOriginalValues != null)
+                return mOriginalValues.size();
             return arrayObject.size();
+        }
         return 0;
     }
 
