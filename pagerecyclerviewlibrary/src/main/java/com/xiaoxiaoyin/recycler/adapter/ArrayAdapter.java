@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 
 import com.xiaoxiaoyin.recycler.Listener.OnItemClickListener;
+import com.xiaoxiaoyin.recycler.Listener.OnItemLongClickListener;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -26,7 +27,8 @@ public abstract class ArrayAdapter<T> extends RecyclerView.Adapter<RecyclerView.
     private ArrayList<T> mOriginalValues;
     private final Object mLock = new Object();
     private LayoutInflater inflater;
-    private OnItemClickListener mListener;
+    public OnItemClickListener mListener;
+    private OnItemLongClickListener longClickListener;
     private boolean isHead;
 
     public ArrayAdapter(Context context) {
@@ -146,6 +148,10 @@ public abstract class ArrayAdapter<T> extends RecyclerView.Adapter<RecyclerView.
         this.mListener = listener;
     }
 
+    public void setOnItemLongClickListener(OnItemLongClickListener longClickListener) {
+        this.longClickListener = longClickListener;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder = getViewHolder(parent, viewType);
@@ -169,10 +175,24 @@ public abstract class ArrayAdapter<T> extends RecyclerView.Adapter<RecyclerView.
                 if (mListener != null) {
                     T obj = (T) v.getTag();
                     if (obj != null) {
-                        mListener.onItemClickListener(obj);
+                        mListener.onItemClickListener(obj, v);
                     }
 
                 }
+            }
+        });
+
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if (longClickListener != null) {
+                    T obj = (T) v.getTag();
+                    if (obj != null) {
+                        longClickListener.onItemLongClickListener(obj, v);
+                        return true;
+                    }
+                }
+                return false;
             }
         });
     }
