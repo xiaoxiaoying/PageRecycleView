@@ -123,6 +123,12 @@ public class PageRecyclerView extends RecyclerView {
         mLoadingFooter.setState(status);
     }
 
+    public LoadingFooter.State getState() {
+        if (mLoadingFooter != null)
+            return mLoadingFooter.getState();
+        else return null;
+    }
+
     public void setState(LoadingFooter.State status, long delay) {
         mLoadingFooter.setState(status, delay);
     }
@@ -186,9 +192,11 @@ public class PageRecyclerView extends RecyclerView {
 
 
     private LoadAdapter mLoadAdapter;
+    private RecyclerView.Adapter mAdapter;
 
     @Override
     public void setAdapter(RecyclerView.Adapter adapter) {
+        mAdapter = adapter;
         if (adapter != null) {
             mLoadAdapter = new LoadAdapter(adapter);
         }
@@ -196,6 +204,9 @@ public class PageRecyclerView extends RecyclerView {
     }
 
     public void notifyDataSetChanged() {
+        if (mAdapter != null) {
+            mAdapter.notifyDataSetChanged();
+        }
         if (mLoadAdapter != null) {
             mLoadAdapter.notifyDataSetChanged();
         }
@@ -203,6 +214,10 @@ public class PageRecyclerView extends RecyclerView {
 
 
     public void notifyItemInserted(int index) {
+        if (mAdapter != null) {
+            mAdapter.notifyItemInserted(index);
+        }
+
         if (mLoadAdapter != null) {
             mLoadAdapter.notifyItemInserted(index);
         }
@@ -380,11 +395,11 @@ public class PageRecyclerView extends RecyclerView {
 
         private void setLayoutParams(View view) {
             if (layoutManagerType == TYPE_MANAGER_STAGGERED_GRID) {
-                StaggeredGridLayoutManager.LayoutParams layoutParams = new StaggeredGridLayoutManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                StaggeredGridLayoutManager.LayoutParams layoutParams = new StaggeredGridLayoutManager.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                 layoutParams.setFullSpan(true);
                 view.setLayoutParams(layoutParams);
             } else if (layoutManagerType == TYPE_MANAGER_LINEAR || layoutManagerType == TYPE_MANAGER_GRID) {
-                view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
+                view.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
         }
 
