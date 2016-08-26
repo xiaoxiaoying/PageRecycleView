@@ -6,11 +6,6 @@
 
 # PageRecyclerView
 
-本案例是studio项目，不过我打包了jar
-
-[下载jar][1]
-
-
 
 为RecyclerView添加head
 ```java
@@ -36,6 +31,5 @@ adapter.setOnItemClickListener(this);
 mRecyclerView.setItemLayoutMatchParent(5);
 ```
 
-[1]:https://github.com/xiaoxiaoying/PageRecycleView/tree/master/libs
 [2]:https://github.com/andyxialm/SmoothCheckBox
 [3]:https://github.com/xiaoxiaoying/PageRecycleView/blob/master/gif/checkBox.gif
