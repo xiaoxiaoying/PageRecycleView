@@ -5,6 +5,9 @@
 
 ![效果图](https://github.com/xiaoxiaoying/PageRecycleView/blob/master/gif/checkBox.gif)
 
+<span style="color:red;">此项目不在维护</span>
+* 新的 [libs][4]
+
 # PageRecyclerView
 
 
@@ -15,7 +18,7 @@
  mRecyclerView.addHeaderView(view);
 
 ```
-* 下拉刷新 只支持 **VERTICAL**
+* 上拉加载
 
 * 需要实现 OnLoadNextListener
 
@@ -39,3 +42,4 @@ mRecyclerView.setItemLayoutMatchParent(5);
 
 [2]:https://github.com/andyxialm/SmoothCheckBox
 [3]:https://github.com/xiaoxiaoying/PageRecycleView/blob/master/gif/checkBox.gif
+[4]:https://github.com/xiaoxiaoying/Page-RecyclerView-ArrayAdpter
